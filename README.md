@@ -1,6 +1,6 @@
 ## How to use the template
 ```
-$ npx degit cloudybay/cb_vite_template
+$ npx degit cloudybay/cb_vite_ts_tailwind_template
 ```
 
 ## Requirements
