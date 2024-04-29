@@ -9,7 +9,7 @@ const count = ref(0)
 </script>
 
 <template>
-  <img alt="CB logo" src="../assets/imgs/Cibi_xs.png" />
+  <img alt="CB logo" style="width:240px" src="../assets/imgs/Cibi_xs.png" />
 
   <h1 class=" text-4xl text-primary">{{ msg }} for CB</h1>
 
