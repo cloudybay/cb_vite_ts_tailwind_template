@@ -1,0 +1,8 @@
+import { req } from "../axios/cb"
+
+
+export const AboutRepo: any = {
+  contents: {
+    get: () => req("get", "about"),
+  },
+}

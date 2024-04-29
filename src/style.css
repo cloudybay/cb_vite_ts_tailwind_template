@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply text-gray-900;
+  -webkit-font-smoothing: antialiased; /* for safari & chrome */
+  -moz-osx-font-smoothing: grayscale; /* for firefox */
+}
+
+a {
+  @apply text-primary-500 font-medium;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  @apply rounded transition-all;
+}
+
+i {
+  @apply flex;
+}
+
+html,
+body,
+#app {
+  @apply w-full h-full;
+}
+
+/* 以下會放此專案的自訂樣式，或是用來覆蓋公版樣式 */

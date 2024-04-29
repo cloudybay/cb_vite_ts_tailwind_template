@@ -1,0 +1,58 @@
+import { reactive, readonly, DeepReadonly } from 'vue'
+import { AboutRepo } from '../../repositories/about.ts'
+import { defineStore } from 'pinia'
+
+export interface Store {
+  state: DeepReadonly<State>,
+  fetch_contents: Function
+}
+
+export interface I18n {
+  en: string,
+  zh: string
+}
+
+export interface Content {
+  title: I18n,
+  contents: I18n,
+}
+
+export interface State {
+  contents: Content[] | undefined,
+}
+
+export const useAboutStore = defineStore('AboutStore', () => {
+  const state: State = reactive({
+    contents: undefined,
+  })
+
+  const fetch_contents = async () => {
+    if (state.contents === undefined) {
+      // 前端要依據 code 決定如何處理
+      const payload = await AboutRepo.contents.get()
+      if (payload.code === 500) {
+        state.contents = [{
+            "title": {
+                "en": "Not Available",
+                "zh": "無法取得資料"
+            },
+            "contents": {
+                "en": "",
+                "zh": ""
+            }
+        }]
+      } else {
+        // 目前只有 code 200, 404, 不做特殊處理
+        state.contents = payload.data
+      }
+    }
+  }
+
+
+  const store: Store = {
+    state: readonly(state),
+    fetch_contents,
+  }
+
+  return store
+})
