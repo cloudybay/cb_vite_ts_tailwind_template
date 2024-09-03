@@ -4,7 +4,7 @@ $ npx degit cloudybay/cb_vite_ts_tailwind_template
 ```
 
 ## Requirements
-- node 14.17.4
+- node 16
 - npm 6.14.14
 
 ## Project setup
