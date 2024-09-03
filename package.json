@@ -1,5 +1,5 @@
 {
-  "name": "project_frontend",
+  "name": "project-frontend",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -7,17 +7,17 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@intlify/unplugin-vue-i18n": "^1.4.0",
-    "axios": "^1.5.1",
-    "pinia": "^2.1.7",
-    "vue": "^3.3.4",
-    "vue-i18n": "^9.5.0",
-    "vue-router": "^4.1.6"
+    "@intlify/unplugin-vue-i18n": "^1.6.0",
+    "axios": "^1.7.7",
+    "pinia": "^2.2.2",
+    "vue": "^3.4.38",
+    "vue-i18n": "^9.14.0",
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.4.5",
-    "tailwindcss": "^3.3.3",
-    "typescript": "^5.0.2"
+    "@vitejs/plugin-vue": "^4.6.2",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "vite": "^4.5.3"
   }
 }
