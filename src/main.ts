@@ -5,14 +5,12 @@ import App from './App.vue'
 import router from './router'
 
 import "./assets/css/style.css"
-import i18n from './i18n'
-
-
+// import "./font_icon/style.css"
 // import './libs/cb-js/cb.date.ts'
+import './libs/utils.ts'
 
 const pinia = createPinia()
 const app = createApp(App)
 app.use(pinia)
   .use(router)
-  .use(i18n)
   .mount('#app')
