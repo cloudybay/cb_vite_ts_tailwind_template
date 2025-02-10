@@ -1,10 +1,10 @@
-import { RouterOptions, createRouter, createWebHistory } from 'vue-router'
+import { RouterOptions, createRouter, createWebHistory } from "vue-router"
 
 const routes = [
   {
-    path: '',
-    name: 'Main',
-    component: () => import('./views/Main.vue'),
+    path: "",
+    name: "Main",
+    component: () => import("./views/Main.vue"),
   },
 ]
 
@@ -17,7 +17,7 @@ const options: RouterOptions = {
         setTimeout(() => {
           resolve({
             el: to.hash,
-            behavior: 'smooth',
+            behavior: "smooth",
           })
         }, 200)
       })

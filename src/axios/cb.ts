@@ -4,7 +4,7 @@
  * 2. 封裝 http 方法
  */
 
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios"
 
 export const cb_json_axios = axios.create({
   baseURL: import.meta.env.VITE_APP_SERVER_HOST,
@@ -13,14 +13,13 @@ export const cb_json_axios = axios.create({
 cb_json_axios.interceptors.response.use((res) => {
   return res
 })
-cb_json_axios.defaults.headers.get['Accept'] = 'application/json'
-cb_json_axios.defaults.headers.post['Content-Type'] = 'application/json'
+cb_json_axios.defaults.headers.get["Accept"] = "application/json"
+cb_json_axios.defaults.headers.post["Content-Type"] = "application/json"
 cb_json_axios.defaults.withCredentials = true
-cb_json_axios.defaults.xsrfCookieName = 'csrftoken'
-cb_json_axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-cb_json_axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
-cb_json_axios.defaults.headers.common['Authorization'] =
-  'Bearer ' + localStorage.getItem('google_bearer_access_token')
+cb_json_axios.defaults.xsrfCookieName = "csrftoken"
+cb_json_axios.defaults.xsrfHeaderName = "X-CSRFToken"
+cb_json_axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest"
+cb_json_axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("google_bearer_access_token")
 
 const response_wrapper = (response: AxiosResponse) => {
   return {
@@ -51,16 +50,14 @@ cb_json_axios.interceptors.response.use(
       // 後端可處理, 但因某些原因回傳了錯誤訊息
       // 這種情形需由前端另行判斷決定處理方式
       return Promise.resolve(response_wrapper(error.response))
-
     } else {
       // 後端真的發生錯誤
       if (!window.navigator.onLine) {
-        alert('Network problem...')
+        alert("Network problem...")
       }
 
       return Promise.reject(error)
     }
-
   }
 )
 
@@ -68,15 +65,15 @@ cb_json_axios.interceptors.response.use(
 export const req = (method: string, url: string, data?: any): any => {
   method = method.toLowerCase()
   switch (method) {
-    case 'post':
+    case "post":
       return cb_json_axios.post(url, data)
-    case 'get':
+    case "get":
       return cb_json_axios.get(url, { params: data })
-    case 'delete':
+    case "delete":
       return cb_json_axios.delete(url, { data: data })
-    case 'put':
+    case "put":
       return cb_json_axios.put(url, data)
-    case 'patch':
+    case "patch":
       return cb_json_axios.patch(url, data)
     default:
       console.log(`Unknown http method: ${method}`)
