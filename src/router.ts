@@ -1,4 +1,4 @@
-import { RouterOptions, createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHistory } from "vue-router"
 
 const routes = [
   {
@@ -8,8 +8,10 @@ const routes = [
   },
 ]
 
-const options: RouterOptions = {
-  history: createWebHistory(),
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  linkActiveClass: "active",
+  routes,
   scrollBehavior(to: any, from: any) {
     // scroll to top when component changed
     if (to.hash) {
@@ -25,8 +27,6 @@ const options: RouterOptions = {
       return { top: 0 }
     }
   },
-  routes,
-}
+})
 
-const router = createRouter(options)
 export default router
