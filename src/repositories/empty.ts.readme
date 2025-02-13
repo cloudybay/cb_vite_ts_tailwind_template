@@ -1,8 +1,19 @@
-import { req } from "../axios/cb"
+import axios from "axios"
 
+const backend_json_axios = axios.create({
+  baseURL: import.meta.env.VITE_APP_SERVER_HOST,
+})
+
+backend_json_axios.defaults.headers.get["Accept"] = "application/json"
+backend_json_axios.defaults.headers.post["Content-Type"] = "application/json"
+backend_json_axios.defaults.withCredentials = true
+backend_json_axios.defaults.xsrfCookieName = "csrftoken"
+backend_json_axios.defaults.xsrfHeaderName = "X-CSRFToken"
+backend_json_axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest"
 
 export const AboutRepo: any = {
   contents: {
-    get: () => req("get", "about"),
+    get: (data) => backend_json_axios.get("about", {params: data}),
+    post: (data) => backend_json_axios.post("about", {data: data}),
   },
 }

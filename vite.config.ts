@@ -23,13 +23,6 @@ export default defineConfig(({ command, mode }) => {
     server: {
       host: env.VITE_APP_DEV_HOST,
       port: env.VITE_APP_DEV_PORT,
-      proxy: {
-        "/media": {
-          target: env.VITE_APP_SERVER_HOST,
-          changeOrigin: true,
-          secure: false,
-        },
-      },
     },
   }
 })
