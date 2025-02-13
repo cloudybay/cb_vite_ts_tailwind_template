@@ -1,7 +1,9 @@
-FROM devforth/spa-to-http:1.0.6 AS source
+FROM nginx:1.27.3-alpine
 
-RUN apk add 'curl==8.5.0-r0'
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
-COPY ./dist/ .
+COPY ./dist/ /www
 
-USER 1000:1000
+EXPOSE 8080
+
+CMD ["nginx", "-g", "daemon off;"]
