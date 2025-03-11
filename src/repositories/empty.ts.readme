@@ -11,6 +11,11 @@ backend_json_axios.defaults.xsrfCookieName = "csrftoken"
 backend_json_axios.defaults.xsrfHeaderName = "X-CSRFToken"
 backend_json_axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest"
 
+// 視後端傳來的資料格式決定要不要這個設定
+backend_json_axios.interceptors.response.use((response) => {
+  return response.data
+})
+
 export const AboutRepo: any = {
   contents: {
     get: (data) => backend_json_axios.get("about", {params: data}),
